@@ -21,7 +21,7 @@ stages:
   jobs: 
     - job: BuildJob
       steps:
-    - bash: echo "Do the build"
+      - bash: echo "Do the build"
 - stage: DevDeploy
   jobs:
   - deployment: DevDeployJob
@@ -41,8 +41,3 @@ stages:
           steps:
           - script: echo deploy to QA
 
-
-
-steps:
-- script: echo Running on $(operatingSystem)
-  displayName: 'Run a one-line script'
