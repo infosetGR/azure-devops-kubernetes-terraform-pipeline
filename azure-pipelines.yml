@@ -25,6 +25,6 @@ stages:
       inputs:
         containerRegistry: 'fotisss-docker-hub-connection'
         repository: 'fotisss/currency-exchange-devops'
-        command: 'build'
+        command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
