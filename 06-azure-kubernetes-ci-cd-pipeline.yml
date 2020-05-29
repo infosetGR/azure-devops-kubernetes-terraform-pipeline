@@ -6,7 +6,8 @@ resources:
 - repo: self
 
 variables:
-   tag: '$(Build.BuildId)'
+   tag: 85
+   #'$(Build.BuildId)'
 
 stages:
 
@@ -22,13 +23,13 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: Docker@2
-      inputs:
-        containerRegistry: 'fotisss-docker-hub-connection'
-        repository: 'fotisss/currency-exchange-devops'
-        command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
-        tags: '$(tag)'
+    # - task: Docker@2
+    #   inputs:
+    #     containerRegistry: 'fotisss-docker-hub-connection'
+    #     repository: 'fotisss/currency-exchange-devops'
+    #     command: 'buildAndPush'
+    #     Dockerfile: '**/Dockerfile'
+    #     tags: '$(tag)'
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
@@ -47,19 +48,19 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: DownloadBuildArtifacts@0
-      inputs:
-        buildType: 'current'
-        downloadType: 'specific'
-        artifactName: 'manifests'
-        itemPattern: '**/*.yaml'
-        downloadPath: '$(System.ArtifactsDirectory)'
-    # - task: DownloadPipelineArtifact@2
+    # - task: DownloadBuildArtifacts@0
     #   inputs:
     #     buildType: 'current'
+    #     downloadType: 'specific'
     #     artifactName: 'manifests'
     #     itemPattern: '**/*.yaml'
-    #     targetPath: '$(System.ArtifactsDirectory)'
+    #     downloadPath: '$(System.ArtifactsDirectory)'
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        buildType: 'current'
+        artifactName: 'manifests'
+        itemPattern: '**/*.yaml'
+        targetPath: '$(System.ArtifactsDirectory)'
     - task: KubernetesManifest@0
       inputs:
         action: 'deploy'
