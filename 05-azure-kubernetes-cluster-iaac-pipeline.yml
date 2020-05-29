@@ -15,19 +15,19 @@ steps:
 #     echo Add other tasks to build, test, and deploy your project.
 #     echo See https://aka.ms/yaml
 #   displayName: 'Run a multi-line script'
-# - task: TerraformCLI@0
-#   inputs:
-#     command: 'init'
-#     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-#     #commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
-#     backendType: 'azurerm'
-#     backendServiceArm: 'azure-resource-manager-service-connection'
-#     ensureBackend: true
-#     backendAzureRmResourceGroupName: 'terraform-backend-rg'
-#     backendAzureRmResourceGroupLocation: 'westeurope'
-#     backendAzureRmStorageAccountName: 'storageacctfotis'
-#     backendAzureRmContainerName: 'storageacctfotiscontainer'
-#     backendAzureRmKey: 'kubernetes-dev.tfstate'
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    #commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    backendType: 'azurerm'
+    backendServiceArm: 'azure-resource-manager-service-connection'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmResourceGroupLocation: 'westeurope'
+    backendAzureRmStorageAccountName: 'storageacctfotis'
+    backendAzureRmContainerName: 'storageacctfotiscontainer'
+    backendAzureRmKey: 'kubernetes-dev.tfstate'
 
 # - task: TerraformCLI@0
 #   inputs:
