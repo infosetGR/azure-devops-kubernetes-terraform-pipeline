@@ -9,7 +9,7 @@ steps:
   displayName: 'Run a one-line script'
 - task: DownloadSecureFile@1
   name: publickey
-  inputs:
+  inputs:  
     secureFile: 'azure_rsa.pub'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
