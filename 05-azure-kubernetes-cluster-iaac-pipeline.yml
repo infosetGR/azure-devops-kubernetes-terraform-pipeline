@@ -8,9 +8,9 @@ steps:
 - script: echo K8S Terraform Azure!
   displayName: 'Run a one-line script'
 - task: DownloadSecureFile@1
+  name: publickey
   inputs:
     secureFile: 'azure_rsa.pub'
-    name: publickey
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
