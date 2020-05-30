@@ -6,15 +6,15 @@ metadata:
   name: currency-exchange
   namespace: default
 spec:
-  replicas: 2 #CHANGE
+  replicas: 1 #CHANGE
   minReadySeconds: 45
   selector:
     matchLabels:
       app: currency-exchange
   strategy:
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxSurge: 50% #25%
+      maxUnavailable: 50% # 25%
     type: RollingUpdate
   template:
     metadata:
@@ -50,7 +50,7 @@ spec:
           periodSeconds: 10
           initialDelaySeconds: 60
       restartPolicy: Always
-      terminationGracePeriodSeconds: 30
+      terminationGracePeriodSeconds: 60
 ---
 apiVersion: v1
 kind: Service
