@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: currency-exchange
-        image: in28min/currency-exchange-devops
+        image: fotisss/currency-exchange-devops
         imagePullPolicy: IfNotPresent
         ports:
         - name: liveness-port
@@ -68,4 +68,4 @@ spec:
   selector:
     app: currency-exchange
   sessionAffinity: None #CHANGE
-  type: NodePort #LoadBalancer
+  type: LoadBalancer #NodePort 
